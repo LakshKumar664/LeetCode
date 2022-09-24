@@ -2,8 +2,8 @@ class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
         /*
-            k = 9    2
-            
+            Time Complexity : O(n)
+            Space Complexity : O(n)
         */
         
         int temp = 0;
@@ -17,13 +17,17 @@ public:
             int new_idx = (idx + k) % nums.size();
             temp = nums[new_idx];
             nums[new_idx] = prev_elem;
+
             long long num = count;
             num = num * k;
-            if(((num) % nums.size() == 0 || nums.size() % k == 0) && idx + k >= nums.size()){
+            
+            if((num % nums.size() == 0 || nums.size() % k == 0) 
+                    && idx + k >= nums.size())
+            {
                 new_idx ++;
                 temp = nums[new_idx];
-                // nums[new_idx] = prev_elem;
             }
+
             idx = new_idx;
             prev_elem = temp;
         }
