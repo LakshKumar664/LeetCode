@@ -11,6 +11,11 @@
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
+        /*
+            Time : O(N)
+            Space : O(1)
+        */
+        
         if(!head)
             return head;
         
