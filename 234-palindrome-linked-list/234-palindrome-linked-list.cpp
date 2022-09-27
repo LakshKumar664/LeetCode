@@ -29,15 +29,9 @@ public:
     
     ListNode* traverse(ListNode* temp1, ListNode* temp2, bool& is_palindrome){
         if(!temp2)
-            return nullptr;
-        ListNode* n = nullptr;
-        
-        if(temp2->next){
-            n = traverse(temp1, temp2->next, is_palindrome);
-        }
-        else{
-            n = temp1;
-        }
+            return temp1;
+
+        ListNode* n = traverse(temp1, temp2->next, is_palindrome);
         
         if(n->val != temp2->val){
             is_palindrome = false;
