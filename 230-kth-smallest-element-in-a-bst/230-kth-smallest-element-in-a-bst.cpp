@@ -14,9 +14,10 @@ public:
     int kthSmallest(TreeNode* root, int k) {
         vector<int> elems;
         
-        inorder(root, elems);
-        
-        return elems[k-1];
+        // inorder(root, elems);
+        int elem;
+        Inorder(root, k, 0, elem);
+        return elem;
     }
     
     void inorder(TreeNode* root, vector<int>& elems){
@@ -26,5 +27,22 @@ public:
         inorder(root->left, elems);
         elems.push_back(root->val);
         inorder(root->right, elems);
+    }
+    
+    int Inorder(TreeNode* root, int k, int p, int& elem){
+        if(!root)
+            return p;
+        
+        // if(!root->left && !root->right)
+        //     return k+1;
+        
+        p = Inorder(root->left, k, p, elem) + 1;
+        if(p == k){
+            elem = root->val;
+            return p;
+        }
+        p = Inorder(root->right, k, p, elem);
+        
+        return p;
     }
 };
