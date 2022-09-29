@@ -13,9 +13,9 @@ class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
         vector<int> elems;
+        int elem;
         
         // inorder(root, elems);
-        int elem;
         Inorder(root, k, 0, elem);
         return elem;
     }
@@ -32,9 +32,6 @@ public:
     int Inorder(TreeNode* root, int k, int p, int& elem){
         if(!root)
             return p;
-        
-        // if(!root->left && !root->right)
-        //     return k+1;
         
         p = Inorder(root->left, k, p, elem) + 1;
         if(p == k){
